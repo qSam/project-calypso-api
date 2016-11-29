@@ -6,6 +6,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const router = require('./router');
 
+//DB Setup
+mongoose.connect('mongodb://localhost:calypso/calypso');
+
 
 //App Setup
 const app = express();
