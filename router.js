@@ -1,4 +1,4 @@
-
+const Authentication = require('./controllers/authentication');
 
 
 module.exports = function(app) {
@@ -7,6 +7,6 @@ module.exports = function(app) {
   });
 
   //Sign In Routes
-  //app.post('/signup')
+  app.post('/signup', Authentication.signup);
   //app.post('/signin')
 }
