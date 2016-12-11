@@ -1,5 +1,5 @@
 const Authentication = require('./controllers/authentication');
-
+const Policy = require('./controllers/policy');
 
 module.exports = function(app) {
   app.get('/', function(req,res){
@@ -11,6 +11,7 @@ module.exports = function(app) {
   //app.post('/signin')
 
   //Policy Routes
+  app.post('/createPolicy', Policy.createPolicy);
 
 
 }
