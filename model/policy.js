@@ -8,6 +8,7 @@ const memberSchema = new Schema({
 });
 
 const policySchema = new Schema({
+  policyNumber: String,
   totalAmount: Number,
   policyLength: Number,
   policyMembers: [memberSchema]
