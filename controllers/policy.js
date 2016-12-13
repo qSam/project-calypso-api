@@ -4,7 +4,7 @@ const Policy = require('../model/policy');
 exports.createPolicy = function(req,res,next) {
     const policyNumber = req.body.policyNumber;
     const totalAmount = req.body.totalAmount;
-    const policyLength = req.body.policylength;
+    const policyLength = req.body.policyLength;
     const policyMembers = req.body.policyMembers;
 
     if(!policyNumber) {
@@ -23,13 +23,28 @@ exports.createPolicy = function(req,res,next) {
 
 
      if(!policyMembers) {
-           return res.status(422).send({Error:'Policy Members not provided'});
+           policyMembers = [];
     }
 
 
     Policy.findOne({policyNumber:policyNumber}, function(err,policyFound){
+        if(err) {
+          return next(err);
+        }
 
+        const policy = new Policy({
+          policyNumber:policyNumber,
+          totalAmount:totalAmount,
+          policyLength:policyLength,
+          policyMembers:policyMembers
+        });
+
+        policy.save(function(err){
+          if(err){
+            return next(err);
+          }
+        })
     });
 
-    res.send("THe policy is about to be created");
+    res.send("The policy has been created");
 }

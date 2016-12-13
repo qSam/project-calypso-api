@@ -12,7 +12,7 @@ const policySchema = new Schema({
   totalAmount: Number,
   policyLength: Number,
   policyMembers: [memberSchema]
-})
+});
 
 
 //Create the policy class
