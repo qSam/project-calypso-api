@@ -8,6 +8,10 @@ exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
   const username = req.body.username;
+  const policyNumber = req.body.policyNumber;
+  const totalAmount = req.body.totalAmount;
+  const policyLength = req.body.policyLength;
+  const policyMembers = req.body.policyMembers;
 
   if (!email || !password) {
     return res.status(422).send({error: 'You must provide email and password' });
@@ -26,7 +30,8 @@ exports.signup = function(req, res, next) {
     const user = new User({
       email:email,
       password:password,
-      username: username
+      username: username,
+      policies: []
     });
 
     user.save(function(err){
