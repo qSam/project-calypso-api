@@ -11,7 +11,7 @@ module.exports = function(app) {
   //app.post('/signin')
 
   //Policy Routes
-  app.post('/createPolicy', Policy.createPolicy);
+  app.post('/createPolicy/:id', Policy.createPolicy);
 
 
 }
