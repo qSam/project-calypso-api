@@ -51,3 +51,19 @@ exports.createPolicy = function(req,res,next) {
 
     //res.send("The policy has been created");
 }
+
+exports.getAllPolicies = function(req,res, next) {
+  const email = req.params.id;
+
+  User.findOne({email:email}, function(err, user){
+    if (err) {
+      return next(err);
+    }
+
+    if(user) {
+        res.send(user.policies);
+    } else {
+      res.send("User not found");
+    }
+  });
+}
