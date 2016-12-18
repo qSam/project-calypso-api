@@ -41,7 +41,7 @@ exports.createPolicy = function(req,res,next) {
           console.log(policyObject);
           user.policies.push(policyObject);
           user.save();
-          res.send("User has been found");
+          res.send("User has been found and policy added");
         } else {
           res.send("User not found");
         }
