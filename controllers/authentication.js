@@ -9,17 +9,17 @@ exports.signup = function(req, res, next) {
   const password = req.body.password;
   const username = req.body.username;
 
-  if (!email || !password) {
-    return res.status(422).send({error: 'You must provide email and password' });
+  if (!username || !password) {
+    return res.status(422).send({error: 'You must provide username and password' });
   }
 
-  User.findOne({email:email}, function(err,userFound){
+  User.findOne({username:username}, function(err,userFound){
     if (err) {
       return next(err);
     }
 
     if (userFound) {
-      return res.status(422).send({error: 'Email in use'});
+      return res.status(422).send({error: 'User name in use'});
     }
 
     //Create and save new user
@@ -51,7 +51,7 @@ exports.signin = function(req,res,next) {
   const password = req.body.password;
   const username = req.body.username;
 
-  User.findOne({email:email}, function(err,user){
+  User.findOne({username:username}, function(err,user){
     if(err) { return next(err) }
 
     if (!user) {

@@ -1,9 +1,8 @@
-const Policy = require('../model/policy');
 const User  = require('../model/user');
 
 
 exports.createPolicy = function(req,res,next) {
-    const email = req.params.id;
+    const username = req.params.id;
     const policyNumber = req.body.policyNumber;
     const totalAmount = req.body.totalAmount;
     const policyLength = req.body.policyLength;
@@ -26,7 +25,7 @@ exports.createPolicy = function(req,res,next) {
 
 
 
-    User.findOne({email:email}, function(err,user){
+    User.findOne({username:username}, function(err,user){
         if(err) {
           return next(err);
         }
@@ -53,9 +52,9 @@ exports.createPolicy = function(req,res,next) {
 }
 
 exports.getAllPolicies = function(req,res, next) {
-  const email = req.params.id;
+  const username = req.params.id;
 
-  User.findOne({email:email}, function(err, user){
+  User.findOne({username:username}, function(err, user){
     if (err) {
       return next(err);
     }
