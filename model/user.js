@@ -47,6 +47,9 @@ userSchema.pre('save', function(next){
 
   })
 
+})
+
+
   //Compare password method
   userSchema.methods.comparePassword = function(candidate, callback){
     bcrypt.compare(candidate, this.password, function(err, isMatch){
@@ -54,8 +57,6 @@ userSchema.pre('save', function(next){
       callback(null, isMatch);
     })
   }
-
-})
 
 
 //Create the model class

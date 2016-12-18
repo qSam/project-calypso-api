@@ -65,12 +65,12 @@ exports.signin = function(req,res,next) {
 
       if (!isMatch){
         return res.status(422).send({error: 'Incorrect password when signing in'});
+      } else {
+        res.send("Username and password have matched")
       }
 
-      res.send("Username and password have matched")
     })
 
 
-    return done(null, user);
   })
 }
