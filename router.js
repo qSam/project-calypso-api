@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   //Policy Routes
   app.post('/createPolicy/:id', Policy.createPolicy);
-  app.post('/getAllPolicies/:id',Policy.getAllPolicies);
+  app.get('/getAllPolicies/:id',Policy.getAllPolicies);
 
 
 }

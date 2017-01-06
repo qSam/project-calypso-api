@@ -6,7 +6,7 @@ exports.createPolicy = function(req,res,next) {
     const policyNumber = req.body.policyNumber;
     const totalAmount = req.body.totalAmount;
     const policyLength = req.body.policyLength;
-    const policyMembers = [];
+    const policyMembers = req.body.policyMembers;
 
     if(!policyNumber) {
       return res.status(422).send({Error:'Policy Number not provided'});
@@ -20,6 +20,10 @@ exports.createPolicy = function(req,res,next) {
 
      if(!policyLength) {
           return res.status(422).send({Error:'Policy length not provided'});
+     }
+
+     if(!policyMembers) {
+       policyMembers = [];
      }
 
 

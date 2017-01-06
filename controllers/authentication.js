@@ -5,9 +5,10 @@ const User = require('../model/user');
 
 exports.signup = function(req, res, next) {
   //Get values from request body
+  const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  const username = req.body.username;
+
 
   if (!username || !password) {
     return res.status(422).send({error: 'You must provide username and password' });
@@ -24,9 +25,9 @@ exports.signup = function(req, res, next) {
 
     //Create and save new user
     const user = new User({
+      username: username,
       email:email,
       password:password,
-      username: username,
       policies: []
     });
 
@@ -47,9 +48,10 @@ exports.signup = function(req, res, next) {
 
 exports.signin = function(req,res,next) {
 
+  const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  const username = req.body.username;
+
 
   User.findOne({username:username}, function(err,user){
     if(err) { return next(err) }
