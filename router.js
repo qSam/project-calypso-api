@@ -8,7 +8,7 @@ module.exports = function(app) {
 
   //Sign In Routes
   app.post('/signup', Authentication.signup);
-  app.post('/signin', Authentication.signin)
+  app.post('/signin', Authentication.signin);
 
   //Policy Routes
   app.post('/createPolicy/:id', Policy.createPolicy);
