@@ -3,7 +3,7 @@ const User  = require('../model/user');
 
 exports.createPolicy = function(req,res,next) {
     const username = req.params.id;
-    const policyNumber = req.body.policyNumber;
+    const policyNumber = req.body.policyName;
     const totalAmount = req.body.totalAmount;
     const policyLength = req.body.policyLength;
     const policyMembers = req.body.policyMembers;
