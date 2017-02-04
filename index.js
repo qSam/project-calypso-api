@@ -10,7 +10,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 //DB Setup
-mongoose.connect('mongodb://localhost:calypso/calypso');
+//mongoose.connect('mongodb://localhost:calypso/calypso');
+mongoose.connect('mongodb://heroku_b3jlsb12:r1cbklsetd9t58t5bpic3a9h9h@ds031591.mlab.com:31591/heroku_b3jlsb12');
 
 
 //App Setup
