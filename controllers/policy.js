@@ -70,3 +70,27 @@ exports.getAllPolicies = function(req,res, next) {
     }
   });
 }
+
+exports.fetchOnePolicy = function(req,res, next) {
+  const username = req.params.id;
+  const policyID = req.body.policyID;
+
+  User.findOne({username:username}, function(err, user){
+    if(err) {
+      return next(err);
+    }
+
+    if(user) {
+
+      var userPolicy;
+      userPolicy = user.policies.filter( (policy) => {
+        console.log(policy._id);
+        return policy._id == policyID;
+      });
+      res.send(userPolicy);
+    } else {
+      res.send("User not found");
+    }
+
+  });
+}
