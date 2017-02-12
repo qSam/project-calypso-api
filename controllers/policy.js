@@ -1,4 +1,6 @@
 const User  = require('../model/user');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
 exports.createPolicy = function(req,res,next) {
@@ -33,18 +35,31 @@ exports.createPolicy = function(req,res,next) {
         if(err) {
           return next(err);
         }
-        //res.send(userFound);
+
+
+        const policySchema = new Schema({
+          policyNumber: String,
+          totalAmount: Number,
+          policyLength: Number,
+          policyMembers: [ {type: String}]
+        });
+        var Policy = mongoose.model('Policy', policySchema);
+
+
         if(user){
-          const policyObject = {
+
+          var policyObject = new Policy({
             "policyNumber":policyNumber,
             "totalAmount":totalAmount,
             "policyLength":policyLength,
             "policyMembers":policyMembers
-          }
+          });
 
-          console.log(policyObject);
           user.policies.push(policyObject);
           user.save();
+
+
+
           res.send("User has been found and policy added");
         } else {
           res.send("User not found");

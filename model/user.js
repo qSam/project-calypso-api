@@ -5,15 +5,12 @@ const bcrypt = require('bcrypt-nodejs');
 
 //Define the Model
 
-const memberSchema = new Schema({
-  member: String
-});
 
 const policySchema = new Schema({
   policyNumber: String,
   totalAmount: Number,
   policyLength: Number,
-  policyMembers: [memberSchema]
+  policyMembers: [{type:String}]
 });
 
 const userSchema = new Schema({
