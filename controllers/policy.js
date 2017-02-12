@@ -99,12 +99,12 @@ exports.fetchOnePolicy = function(req,res, next) {
 
       var userPolicy;
       userPolicy = user.policies.filter( (policy) => {
-        console.log(policy._id);
         return policy._id == policyID;
       });
-      res.send(userPolicy);
+      console.log("User policy is : ", userPolicy);
+      res.json(userPolicy);
     } else {
-      res.send("User not found");
+      res.send("User policy not found");
     }
 
   });

@@ -60,7 +60,6 @@ exports.signin = function(req,res,next) {
       return res.status(422).send({error: 'User not found when signing in'});
     }
 
-    console.log(user);
     //Compare password
     user.comparePassword(password, function(err, isMatch){
       if(err) { return next(err) }
