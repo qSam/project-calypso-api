@@ -1,4 +1,5 @@
 const User  = require('../model/user');
+const Policy = require('../model/policy');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -35,15 +36,6 @@ exports.createPolicy = function(req,res,next) {
         if(err) {
           return next(err);
         }
-
-
-        const policySchema = new Schema({
-          policyNumber: String,
-          totalAmount: Number,
-          policyLength: Number,
-          policyMembers: [ {type: String}]
-        });
-        var Policy = mongoose.model('Policy', policySchema);
 
 
         if(user){
