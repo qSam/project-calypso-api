@@ -101,3 +101,22 @@ exports.fetchOnePolicy = function(req,res, next) {
 
   });
 }
+
+exports.deletePolicy = function(req, res, next) {
+  const username = req.params.id;
+  const policyID = req.body.policyID;
+
+  User.findOne({username:username}, function(err, user){
+    if(err) {
+      return next(err);
+    }
+
+    if(user) {
+      user.policies.pull({_id:policyID});
+      user.save();
+      res.send('Policy Deleted')
+    } else {
+      res.send('User not found when deleting policy');
+    }
+  });
+}
