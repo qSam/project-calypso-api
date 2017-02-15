@@ -14,7 +14,7 @@ module.exports = function(app) {
   app.post('/createPolicy/:id', Policy.createPolicy);
   app.get('/getAllPolicies/:id',Policy.getAllPolicies);
   app.post('/fetchOnePolicy/:id', Policy.fetchOnePolicy);
-  app.delete('/deletePolicy/:id', Policy.deletePolicy);
+  app.post('/deletePolicy/:id', Policy.deletePolicy);
 
 
 }
