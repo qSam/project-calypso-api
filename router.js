@@ -1,5 +1,6 @@
 const Authentication = require('./controllers/authentication');
 const Policy = require('./controllers/policy');
+const Email = require('./controllers/email');
 
 module.exports = function(app) {
   app.get('/', function(req,res){
@@ -15,6 +16,9 @@ module.exports = function(app) {
   app.get('/getAllPolicies/:id',Policy.getAllPolicies);
   app.post('/fetchOnePolicy/:id', Policy.fetchOnePolicy);
   app.post('/deletePolicy/:id', Policy.deletePolicy);
+
+  //Email Routes
+  app.get('/sendEmail', Email.sendEmail);
 
 
 }
