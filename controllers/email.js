@@ -5,20 +5,31 @@ const mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 exports.sendEmail = function(req, res, next) {
 
+const toEmail = req.body.toEmail;
 
-var data = {
-  from: 'go.jets.laghari@gmail.com',
-  to: 'go.jets.laghari@gmail.com',
-  subject: 'Hello from Calypso API',
-  text: 'Hey There Bud'
-};
+if(!toEmail) {
+  return res.status(422).send({Error:'To Email not provided'});
+}
 
-mailgun.messages().send(data, function (error, body) {
-  if(error){
-    console.log("Error is : ", error);
-  }
-  console.log(body);
+
+toEmail.forEach( (email) => {
+  var data = {
+    from: 'project.calypso.1988@gmail.com',
+    to: email,
+    subject: 'Hello from Calypso API : ' + email,
+    text: 'Hey There Bud'
+  };
+
+  mailgun.messages().send(data, function (error, body) {
+    if(error){
+      console.log("Error is : ", error);
+    }
+    console.log(body);
+  });
 });
+
+
+
 
 res.send({"Message" : "Email has been sent"});
 
