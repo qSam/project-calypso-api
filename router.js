@@ -18,7 +18,7 @@ module.exports = function(app) {
   app.post('/deletePolicy/:id', Policy.deletePolicy);
 
   //Email Routes
-  app.get('/sendEmail', Email.sendEmail);
+  app.post('/sendEmail', Email.sendEmail);
 
 
 }
